@@ -1,0 +1,77 @@
+/* Layout do card */
+.auth-page{ 
+    min-height:100svh;
+    display:grid; 
+    place-items:center; 
+    padding:clamp(16px,4vw,32px); 
+    background:#e9f3ff; }
+
+.auth-card{ 
+    width:min(92vw,640px); 
+    max-width:360px; 
+    margin:0 auto; 
+    padding: 0 24 px; } 
+
+/* Container que agrupa avatar e título */
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza apenas o topo */
+}
+
+/* Avatar */
+.avatar{
+  width:108px; height:108px; border-radius:50%;
+  background:#0a74ff; display:grid; place-items:center; margin:16px auto 12px;
+  color:#fff; box-shadow:0 10px 22px rgba(10,116,255,.18);
+}
+.avatar svg{ width:56px; height:56px; }
+
+/* Título */
+.title{ text-align:center; color:#0f172a; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; font-size:18px; margin:8px 0 14px; }
+
+/* Labels */
+.field-label{ display:block; color:#374151; font-size:14px; margin:12px 0 6px; }
+
+/* Inputs pílula com ícone */
+.input-wrap{
+  position:relative; width:100%; height:42px;
+  display:flex; align-items:center;
+  background:#fff; border:1px solid #dbe2f0; border-radius:12px;
+  padding:0 38px 0 14px; box-shadow:0 1px 2px rgba(15,23,42,.06);
+}
+.input-wrap:focus-within{ border-color:#b8cffd; box-shadow:0 0 0 3px rgba(10,116,255,.13), 0 1px 2px rgba(15,23,42,.06); }
+.input-wrap input{
+  width:100%; height:100%; border:0; outline:0; background:transparent;
+  font-size:15px; color:#0f172a;
+}
+.input-wrap input::placeholder{ color:#9aa3b2; }
+
+.suffix{ position:absolute; right:12px; top:0; bottom:0; display:grid; place-items:center; opacity:.7; }
+.suffix svg{ width:20px; height:20px; }
+
+/* Checkbox + links */
+.checkbox{ display:flex; align-items:center; gap:8px; margin:10px 0 2px; color:#4b5563; }
+.checkbox input{ width:16px; height:16px; accent-color:#0a74ff; }
+.inline-link{ color:#0a74ff; text-decoration:none; }
+.inline-link:hover{ text-decoration:underline; }
+
+/* Botão principal */
+.btn-submit{
+  width:115%; height:48px; border:0; border-radius:12px; background:#0a74ff;
+  color:#fff; font-weight:800; letter-spacing:.04em; cursor:pointer; margin:12px 0 6px;
+}
+.btn-submit:hover{ background:#0566ef; }
+.btn-submit:active{ transform:scale(.985); }
+
+/* Texto “Possui conta?” centralizado */
+.register-text{ width: 115%;text-align:center; font-size:16px; color:#4b5563; margin-top:10px; margin-bottom:0; }
+.register-text .route{ color:#0a74ff; text-decoration:none; font-weight:600; margin-left:0px; }
+.register-text .route:hover{ text-decoration:underline; }
+
+/* Responsivo estreito */
+@media (max-width: 360px){
+  .auth-card{ width:92vw; }
+}
+
+

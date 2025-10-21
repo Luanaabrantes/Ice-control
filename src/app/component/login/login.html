@@ -1,0 +1,69 @@
+<div class="login-page">
+  <div class="login-card">
+
+   <!-- Avatar (ícone de traço branco) -->
+   <div class="avatar" aria-hidden="true">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cabeça (círculo com traço branco) -->
+    <circle cx="12" cy="8" r="3"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+    <!-- Ombros (arco certo, voltado para cima) -->
+    <path d="M7 18 A5 5 0 0 1 17 18"
+          fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
+
+
+    <h1 class="title">LOGIN</h1>
+
+    <form autocomplete="on" novalidate>
+      <!-- E-mail -->
+      <label class="field-label" for="email">Usuário ou E-mail</label>
+      <div class="input-wrap">
+        <input id="email" type="email" placeholder="Digite seu e-mail" />
+        <span class="suffix" aria-hidden="true">
+          <!-- ícone user cinza, traço -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 7.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
+                  fill="none" stroke="#98a2b3" stroke-width="2"/>
+            <path d="M5 19a7 7 0 0 1 14 0"
+                  fill="none" stroke="#98a2b3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Senha -->
+      <label class="field-label" for="password">Senha</label>
+      <div class="input-wrap">
+        <input id="password" type="password" placeholder="Digite sua senha" />
+        <span class="suffix" aria-hidden="true">
+          <!-- ícone cadeado cinza -->
+          <svg viewBox="0 0 24 24">
+            <path d="M7 10h10a1 1 0 0 1 1 1v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6a1 1 0 0 1 1-1Z"
+                  fill="none" stroke="#98a2b3" stroke-width="2"/>
+            <path d="M8 10V8a4 4 0 1 1 8 0v2"
+                  fill="none" stroke="#98a2b3" stroke-width="2"/>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Lembrar-me -->
+      <label class="checkbox">
+        <input type="checkbox" />
+        <span class="txt">Lembrar-me</span>
+      </label>
+
+      <!-- Link fica embaixo, alinhado à esquerda -->
+      <a class="forgot" href="#">Esqueci minha senha</a>
+
+      <!-- Botão -->
+      <button type="submit" class="btn-enter">ENTRAR</button>
+
+    </form>
+    <p class="register-text mt-3">
+        Ainda não possui conta?
+        <a routerLink="/register">Cadastrar-se</a> 
+    </p>
+  </div>
+</div>

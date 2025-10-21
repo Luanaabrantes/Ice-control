@@ -1,0 +1,76 @@
+<div class="produtos-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <button class="icon-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h1>PRODUTOS</h1>
+
+    <div class="header__actions">
+      <button class="icon-btn" aria-label="Configurações">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.94-2.33 1.43 1.43-2.12 2.12-1.43-1.43a7.95 7.95 0 0 1-2.33 1.35l-.35 1.88h-3.04l-.35-1.88a7.95 7.95 0 0 1-2.33-1.35L6.75 16.7l-2.12-2.12 1.43-1.43a7.95 7.95 0 0 1-1.35-2.33L2.83 9.47V6.43l1.88-.35a7.95 7.95 0 0 1 1.35-2.33L4.63 2.32l2.12-2.12 1.43 1.43a7.95 7.95 0 0 1 2.33-1.35l.35-1.88h3.04l.35 1.88a7.95 7.95 0 0 1 2.33 1.35l1.43-1.43 2.12 2.12-1.43 1.43a7.95 7.95 0 0 1 1.35 2.33l1.88.35v3.04l-1.88.35a7.95 7.95 0 0 1-1.35 2.33Z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO ===== -->
+  <main class="content">
+
+    <button class="btn-primary">NOVO PRODUTO</button>
+
+    <!-- BUSCA -->
+    <div class="search-box">
+      <input type="text" placeholder="Buscar produtos, código ou categorias...">
+      <button>
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="#98a2b3" stroke-width="2"/>
+          <path d="M20 20L17 17" stroke="#98a2b3" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filters">
+      <button class="filters__btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="chips">
+        <button class="chip chip--on">ativos</button>
+        <button class="chip">cx</button>
+        <button class="chip">picolé</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- LISTA DE PRODUTOS -->
+    <div class="prod-list">
+      <div class="prod-card">
+        <img src="https://i.imgur.com/kG5wHhN.png" alt="Produto" class="prod-img">
+        <div class="prod-info">
+          <h3>Lorem ipsum dolor sit amet consectetur...</h3>
+          <p><strong>SKU:</strong> 1235</p>
+          <p><strong>Preço:</strong> R$ 349,90</p>
+          <p><strong>Unidade:</strong> cx</p>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <img src="https://i.imgur.com/kG5wHhN.png" alt="Produto" class="prod-img">
+        <div class="prod-info">
+          <h3>Lorem ipsum dolor sit amet consectetur...</h3>
+          <p><strong>SKU:</strong> 1235</p>
+          <p><strong>Preço:</strong> R$ 349,90</p>
+          <p><strong>Unidade:</strong> cx</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

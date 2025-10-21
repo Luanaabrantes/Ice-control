@@ -1,0 +1,305 @@
+/* === VARIÁVEIS GLOBAIS E ESTILO BASE === */
+:root{
+  /* Cores principais usadas no layout */
+  --page:#ffffff;     /* cor de fundo geral da página */
+  --text:#0f172a;     /* cor principal do texto */
+  --muted:#6b7280;    /* cor de textos secundários */
+  --primary:#0a74ff;  /* azul principal do tema */
+  --chip:#edf2ff;     /* fundo de chips de filtro */
+  --bd:#e6eef8;       /* cor de bordas */
+  --card:#fff;        /* fundo dos cards de produtos */
+  --radius:14px;      /* raio de bordas padrão */
+
+  /* Fonte padrão usada em todo o site */
+  font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Define que o cálculo de largura/altura inclui bordas e padding */
+*{ box-sizing: border-box; }
+
+/* Remove margens padrão do body/html e aplica o fundo azul-claro */
+body,html{
+  margin:0;
+  background:var(--page);
+  color:var(--text);
+}
+
+/* === HEADER FIXO (BARRA SUPERIOR) === */
+.header{
+  position: sticky; top:0; z-index:10; /* Fixa o header no topo ao rolar */
+  display:flex;                        /* Usa flexbox para alinhar elementos */
+  align-items:center;                  /* Centraliza verticalmente */
+  justify-content:space-between;       /* Espaça os itens nas extremidades */
+  gap:8px;                             /* Espaço entre elementos */
+  padding:14px 16px;                   /* Espaçamento interno */
+  background:var(--page);              /* Mesma cor do fundo da página */
+}
+
+/* Título "PEDIDO" do cabeçalho */
+.header__title{
+  flex-grow: 0; /* Faz o título ocupar o espaço disponível */
+  margin:0;
+  font-size:14px;
+  letter-spacing:.6px;
+  font-weight:700; /* negrito */
+}
+
+/* Container que agrupa ícones da direita (carrinho, engrenagem etc.) */
+.header__actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* === BOTÕES DE ÍCONE (CARRINHO, CONFIGURAÇÕES ETC.) === */
+.icon-btn{
+  width:32px; height:32px;
+  display:grid; place-items:center;    /* Centraliza o SVG dentro do botão */
+  border:none;
+  background:#fff;
+  border-radius:10px;
+  box-shadow: 0 1px 2px rgba(15,23,42,.06); /* sombra suave */
+  cursor:pointer;
+}
+.icon-btn svg{ width:20px; height:20px; }
+
+/* Container do ícone com badge (ex: carrinho com contador) */
+.badge{ position: relative; }
+
+/* Bolinha vermelha com número de itens do carrinho */
+.badge__dot{
+  position:absolute;
+  right:-3px; top:-3px;                  /* Fica no canto superior direito */
+  min-width:16px; height:16px;
+  padding:0 4px;
+  border-radius:999px;                   /* Totalmente arredondado */
+  display:grid; place-items:center;
+  background:#ff3b3b; color:#fff;
+  font-size:11px; font-weight:700;
+}
+
+/* === ÁREA DE BUSCA E FILTROS === */
+.search{ padding: 8px 16px; }
+
+/* Caixa de busca (input + botão de lupa) */
+.search__box{
+  position:relative;
+  height:40px;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid var(--bd);
+  display:flex;
+  align-items:center;
+  padding:0 40px 0 12px;
+  box-shadow: 0 1px 2px rgba(15,23,42,.06);
+}
+
+/* Campo de texto dentro da busca */
+.search__box input{
+  border:none;
+  outline:none;
+  background:transparent;
+  width:100%; height:100%;
+  font-size:14px;
+  color:var(--text);
+}
+
+/* Botão de lupa (posicionado dentro da caixa) */
+.search__btn{
+  position:absolute;
+  right:6px; top:0; bottom:0;
+  display:grid; place-items:center;
+  width:32px; height:32px;
+  margin:auto;
+  border:none; background:transparent;
+  cursor:pointer;
+}
+.search__btn svg{
+  width:18px; height:18px; opacity:.7;
+}
+
+/* === FILTROS (BOTÃO + CHIPS DE CATEGORIA) === */
+.filters{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Botão de filtro (ícone do funil) */
+.filters__btn{
+  width:36px; height:36px;
+  border-radius:10px;
+  border:1px solid var(--bd);
+  background:#fff;
+  display:grid; place-items:center;
+  cursor:pointer;
+  box-shadow: 0 1px 2px rgba(15,23,42,.06);
+}
+.filters__btn svg{ width:18px; height:18px; opacity:.7; }
+
+/* Lista horizontal de chips de categoria */
+.chips{
+  display:flex;
+  gap:8px;
+  overflow:auto; /* permite rolar se ultrapassar largura */
+}
+
+/* Cada chip de categoria */
+.chip{
+  border:none;
+  padding:6px 12px;
+  border-radius:999px; /* formato “pílula” */
+  background:var(--chip);
+  color:#334155;
+  font-size:13px;
+  cursor:pointer;
+}
+
+/* Chip selecionado */
+.chip--on{
+  background:#dbeafe;
+  color:#1e40af;
+}
+
+/* === LINHA DIVISÓRIA ENTRE SEÇÕES === */
+.divider{
+  border:0;
+  height:8px;
+  background:rgba(0,0,0,.04);
+  margin:10px 0;
+}
+
+/* === LISTA DE PRODUTOS === */
+.list{
+  padding: 0 16px 16px;
+  display:grid;
+  gap:12px; /* Espaçamento entre cards */
+}
+
+/* === CARD DE PRODUTO === */
+.card{
+  display:grid;
+  grid-template-columns: 76px 1fr auto; /* Imagem | texto | botão “...” */
+  gap:12px;
+  align-items:start;
+  background:var(--card);
+  border:1px solid var(--bd);
+  border-radius: var(--radius);
+  padding:12px;
+  box-shadow: 0 2px 8px rgba(15,23,42,.05);
+}
+
+/* Imagem do produto */
+.card__img{
+  width:76px; height:76px;
+  border-radius:12px;
+  object-fit:cover; /* recorta a imagem proporcionalmente */
+}
+
+/* Área de texto (título, código, preço etc.) */
+.card__body{ display:grid; gap:4px; }
+
+/* Nome do produto */
+.card__title{
+  margin:0;
+  font-size:14px;
+  font-weight:600;
+  line-height:1.25;
+  color:#0f172a;
+}
+
+/* Código ou descrição curta */
+.card__meta{
+  margin:0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Preço */
+.card__price{
+  margin:0;
+  font-size:13px;
+  font-weight:700;
+}
+.card__price span{
+  color:var(--muted);
+  font-weight:400;
+}
+
+/* === AÇÕES DO CARD (Stepper + Botão Adicionar) === */
+.card__actions{
+  margin-top:6px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap; /* quebra linha em telas pequenas */
+}
+
+/* Stepper (botões - e + com quantidade) */
+.stepper{
+  height:34px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#e6f0ff;
+  color:#0a74ff;
+  border-radius:999px;
+  padding:0 10px;
+}
+
+/* Botões + e - do stepper */
+.stepper button{
+  width:28px; height:28px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  background:#0a74ff;
+  color:#fff;
+  font-size:18px;
+  line-height:0;
+}
+
+/* Número central do stepper */
+.stepper .qty{
+  min-width:28px;
+  text-align:center;
+  font-weight:700;
+  color:#0a74ff;
+}
+
+/* Botão “Adicionar” com ícone do carrinho */
+.btn-add{
+  height:34px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--bd);
+  border-radius:10px;
+  background:#fff;
+  padding:0 12px;
+  cursor:pointer;
+  font-weight:600;
+  color:#0f172a;
+}
+.btn-add svg{ width:18px; height:18px; opacity:.8; }
+
+/* Botão de menu “...” no canto direito do card */
+.card__more{
+  border:none;
+  background:transparent;
+  font-size:20px;
+  color:#94a3b8;
+  height:24px;
+  cursor:pointer;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width:420px){
+  /* Diminui tamanho da imagem e ajusta espaçamentos */
+  .card{ grid-template-columns: 64px 1fr auto; }
+  .card__img{ width:64px; height:64px; }
+  .header{ padding:12px; }
+  .search{ padding:8px 12px; }
+  .list{ padding:0 12px 12px; }
+}

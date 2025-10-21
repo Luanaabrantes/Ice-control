@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --page-bg:#e9f3ff;
+  --primary:#0a74ff;
+  --input-bg:#ffffff;
+  --input-bd:#dbe2f0;
+  --text:#0f172a;
+  --label:#374151;
+  --placeholder:#9aa3b2;
+  --link:#0a74ff;
+  --muted:#6b7280;
+  --radius:12px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+html, body{
+  margin:0;
+  background:var(--page-bg);
+  font-family:var(--font);
+  color:var(--text);
+}
+

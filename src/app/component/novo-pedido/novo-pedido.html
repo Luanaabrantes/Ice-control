@@ -1,0 +1,209 @@
+<div class="app-mobile">
+
+  <!-- HEADER -->
+  <header class="np-header">
+    <button class="icon-btn" routerLink="/pedido" aria-label="Voltar">
+      <svg viewBox="0 0 24 24"><path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <h1>NOVO PEDIDO</h1>
+  </header>
+
+  <main class="np-content">
+
+    <!-- CTA principal -->
+    <button class="btn-primary">INCLUIR PEDIDO</button>
+
+    <!-- ====== INFORMAÇÕES DO CLIENTE ====== -->
+    <section class="form-card">
+      <h2 class="form-title">Informações do cliente</h2>
+
+      <label for="cliente">Nome do cliente</label>
+      <div class="input-search">
+        <input id="cliente" type="text" placeholder="Digite o nome do cliente">
+        <button aria-label="Buscar cliente">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="#98a2b3" stroke-width="2"/>
+            <path d="M20 20L17 17" fill="none" stroke="#98a2b3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <label for="tel">Telefone</label>
+      <input id="tel" class="input" type="tel">
+
+      <label for="cel1">Celular</label>
+      <input id="cel1" class="input" type="tel">
+
+      <label for="cel2">Celular 2</label>
+      <input id="cel2" class="input" type="tel">
+
+      <label for="cod">Cód</label>
+      <input id="cod" class="input" type="text">
+
+      <label for="logradouro">Logradouro</label>
+      <input id="logradouro" class="input" type="text">
+
+      <div class="grid-2">
+        <div>
+          <label for="cep">CEP</label>
+          <input id="cep" class="input" type="text">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label for="num">Num</label>
+          <input id="num" class="input" type="text">
+        </div>
+        <div>
+          <label for="bairro">Bairro</label>
+          <input id="bairro" class="input" type="text">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label for="cidade">Cidade</label>
+          <input id="cidade" class="input" type="text">
+        </div>
+        <div>
+          <label for="uf">UF</label>
+          <input id="uf" class="input" type="text" maxlength="2">
+        </div>
+      </div>
+
+      <label for="comp">Comp</label>
+      <input id="comp" class="input" type="text">
+
+      <label for="email">E-mail</label>
+      <input id="email" class="input" type="email">
+
+      <label for="doc">CPF/CNPJ</label>
+      <div class="input-search">
+        <input id="doc" type="text" placeholder="Digite o documento">
+        <button aria-label="Consultar documento">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="#98a2b3" stroke-width="2"/>
+            <path d="M20 20L17 17" fill="none" stroke="#98a2b3" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====== ITENS DO PEDIDO ====== -->
+    <section class="form-card">
+      <h2 class="form-title">Itens do pedido</h2>
+
+      <!-- Item 1 -->
+      <article class="item-card">
+        <div class="item-card__head">
+          <span class="bubble">1</span>
+          <strong>Item 1</strong>
+          <button class="trash" aria-label="Remover item">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <label>Descrição</label>
+        <div class="input-search">
+          <input type="text" placeholder="Descrição">
+          <button aria-label="Buscar produto">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" fill="none" stroke="#98a2b3" stroke-width="2"/>
+              <path d="M20 20L17 17" fill="none" stroke="#98a2b3" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>SKU</label>
+            <input class="input" type="text" placeholder="Sku">
+          </div>
+          <div>
+            <label>Qtd</label>
+            <input class="input" type="number" min="0" placeholder="Qtd">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Preço Lista</label>
+            <input class="input" type="text" placeholder="Preço lista">
+          </div>
+          <div>
+            <label>Desc (%)</label>
+            <input class="input" type="number" min="0" max="100" placeholder="Desc">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Preço Un.</label>
+            <input class="input" type="text" placeholder="Preço un">
+          </div>
+          <div>
+            <label>Preço Total</label>
+            <input class="input" type="text" placeholder="Preço total">
+          </div>
+        </div>
+      </article>
+
+      <!-- Botão adicionar item -->
+      <button class="btn-outline" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12H5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        Adicionar item
+      </button>
+    </section>
+
+    <!-- ====== PAGAMENTO ====== -->
+    <section class="form-card">
+      <h2 class="form-title">Pagamento</h2>
+
+      <label for="cond">Condição de pagamento</label>
+      <input id="cond" class="input" type="text" placeholder="Ex.: 3x">
+
+      <button class="btn-primary" type="button">gerar parcelas</button>
+
+      <!-- Parcela 1 -->
+      <article class="item-card">
+        <div class="item-card__head">
+          <span class="bubble">1</span>
+          <strong>Parcela 1</strong>
+          <button class="trash" aria-label="Remover parcela">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18M8 6v12m8-12v12M10 6l1-2h2l1 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Dias</label>
+            <input class="input" type="number" value="15">
+          </div>
+          <div>
+            <label>Data</label>
+            <input class="input" type="text" value="31/09/2025">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Valor</label>
+            <input class="input" type="text" value="189,66">
+          </div>
+          <div>
+            <label>Forma de pgto</label>
+            <div class="select-like">
+              <span>Dinheiro</span>
+              <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <label>Observação</label>
+        <input class="input" type="text" placeholder="">
+      </article>
+    </section>
+
+  </main>
+</div>
