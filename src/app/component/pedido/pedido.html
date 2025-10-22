@@ -1,3 +1,40 @@
+<!-- LAYOUT -->
+<div class="layout" [class.sidebar-open]="sidebarOpen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">Sistema B2B</div>
+
+    <nav class="sidebar__nav">
+      <a class="nav__item" routerLink="/categoria">
+        <span class="ico">category</span> categoria
+      </a>
+      <a class="nav__item" routerLink="/vendas">
+        <span class="ico">receipt_long</span> vendas
+      </a>
+      <a class="nav__item" routerLink="/clientes">
+        <span class="ico">group</span> clientes
+      </a>
+      <a class="nav__item" routerLink="/produtos">
+        <span class="ico">inventory_2</span> produtos
+      </a>
+      <a class="nav__item is-active" routerLink="/pedido">
+        <span class="ico">shopping_cart</span> pedido
+      </a>
+    </nav>
+  </aside>
+</div> <!-- /layout -->
+
+  <!-- BACKDROP (mobile) -->
+  <button class="backdrop" (click)="closeSidebar()" aria-label="Fechar menu"></button>
+  <button class="icon-btn only-mobile" aria-label="Menu" (click)="toggleSidebar()">
+  <!-- seu SVG do menu -->
+</button>
+
+  <!-- CONTEÚDO -->
+  <main class="page">
+    <!-- seu header atual, busca, lista etc. vão DENTRO deste main -->
+
 <!-- ====== HEADER ====== -->
 <header class="header">
   <button class="icon-btn" aria-label="Menu">

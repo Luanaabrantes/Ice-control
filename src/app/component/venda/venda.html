@@ -1,0 +1,108 @@
+<!--
+  IMPORTANTE: coloque no <head> do seu projeto (ex.: index.html do Angular):
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL,wght,GRAD,opsz@1,500,0,24" rel="stylesheet">
+  <meta name="google" content="notranslate">
+-->
+
+<!-- ====== TOPO DA PÁGINA (Topbar) ====== -->
+<header class="topbar">
+  <button class="icon-btn" aria-label="Abrir menu">
+    <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">menu</span>
+  </button>
+
+  <h1>VENDAS</h1>
+
+  <div class="top-actions">
+    <button class="icon-btn" aria-label="Configurações">
+      <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">settings</span>
+    </button>
+    <button class="icon-btn" aria-label="Perfil">
+      <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">person</span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== CONTEÚDO PRINCIPAL ====== -->
+<main class="page">
+
+  <!-- BOTÃO PRINCIPAL -->
+  <button class="primary-btn">NOVO PEDIDO</button>
+
+  <!-- CAMPO DE BUSCA -->
+  <div class="search" role="search">
+    <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">search</span>
+    <input type="text" placeholder="Buscar" aria-label="Buscar pedidos" />
+  </div>
+
+  <!-- FILTROS (chips) -->
+  <div class="filters" aria-label="Filtros">
+    <button class="chip chip-filter is-active" aria-pressed="true">todos</button>
+    <button class="chip chip-filter" aria-pressed="false">17/09 a 27/09</button>
+  </div>
+
+  <!-- LISTA DE CARDS DE PEDIDOS -->
+  <section class="cards">
+
+    <!-- === CARD 1 === -->
+    <article class="card">
+      <!-- Cabeçalho: número do pedido + menu -->
+      <div class="card-head">
+        <span class="meta">Pedido <strong>#14695</strong></span>
+        <button class="icon-btn" aria-label="Mais opções">
+          <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">more_vert</span>
+        </button>
+      </div>
+
+      <!-- Nome do cliente -->
+      <h2 class="name">Jose Ricardo Flor</h2>
+
+      <!-- Linha com Data (esq) e Total (dir) -->
+      <div class="row two-col">
+        <div>
+          <span class="label">Data</span>
+          <span class="value">25/08/2025</span>
+        </div>
+        <div class="right">
+          <span class="label">Total</span>
+          <span class="value total">R$ 1.589,99</span>
+        </div>
+      </div>
+
+      <!-- Situação (chip colorido) -->
+      <div class="row">
+        <span class="label">Situação</span>
+        <span class="chip chip-status chip-open">Em aberto</span>
+      </div>
+    </article>
+
+    <!-- === CARD 2 === -->
+    <article class="card">
+      <div class="card-head">
+        <span class="meta">Pedido <strong>#14695</strong></span>
+        <button class="icon-btn" aria-label="Mais opções">
+          <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">more_vert</span>
+        </button>
+      </div>
+
+      <h2 class="name">Jose Ricardo Flor</h2>
+
+      <div class="row two-col">
+        <div>
+          <span class="label">Data</span>
+          <span class="value">25/08/2025</span>
+        </div>
+        <div class="right">
+          <span class="label">Total</span>
+          <span class="value total">R$ 1.589,99</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="label">Situação</span>
+        <span class="chip chip-status chip-draft">Em digitação</span>
+      </div>
+    </article>
+
+  </section>
+</main>
