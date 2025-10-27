@@ -8,11 +8,15 @@ import { Cliente } from './component/cliente/cliente';
 import { Venda } from './component/venda/venda';   
 import { Categoria } from './component/categoria/categoria'; 
 import { Sidebar } from './component/sidebar/sidebar';      
+import { CommonModule } from '@angular/common';
 
 
 export const routes: Routes = [
     {
-        path: '',component: Login
+        path: '', redirectTo: 'login', pathMatch: 'full',
+    },
+    {
+        path: 'login', component: Login,
     },
     {
         path: 'register', component: Register,
@@ -37,6 +41,6 @@ export const routes: Routes = [
     },
     {
         path: 'sidebar', component: Sidebar
-    }
- 
+    },
+    
 ];

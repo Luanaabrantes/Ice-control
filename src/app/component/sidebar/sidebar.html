@@ -1,93 +1,70 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sistema B2B | Sidebar</title>
-  <link rel="stylesheet" href="sidebar.css" />
-</head>
-<body>
-  <!-- Toggle invisível (abre/fecha o menu no mobile) -->
-  <input id="menu-toggle" type="checkbox" class="menu-toggle" />
+<!-- Toggle invisível (abre/fecha o menu no mobile) -->
+<input id="menu-toggle" type="checkbox" class="menu-toggle" />
 
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="topbar-content">
-      <label for="menu-toggle" class="hamburger">
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+<!-- Topbar -->
+<header class="topbar">
+  <div class="topbar-content">
+    <label for="menu-toggle" class="hamburger">
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </label>
+    <span class="brand">Sistema B2B</span>
+    <div class="topbar-icons">
+      <button class="icon-btn" title="Configurações">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M19.4 15a7.8 7.8 0 0 0 .1-1l2.1-1.6-2-3.5-2.5.5a7.8 7.8 0 0 0-.8-.5l-.4-2.6H10l-.4 2.6-.8.5-2.4-.5-2 3.5 2.1 1.6v1l-2.1 1.6 2 3.5 2.5-.5c.26.18.53.35.81.5l.39 2.6h4.8l.39-2.6c.28-.15.55-.32.81-.5l2.5.5 2-3.5L19.4 15Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
-      </label>
-      <span class="brand">Sistema B2B</span>
-      <div class="topbar-icons">
-        <button class="icon-btn" title="Configurações">
-          <svg width="22" height="22" viewBox="0 0 24 24">
-            <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M19.4 15a7.8 7.8 0 0 0 .1-1l2.1-1.6-2-3.5-2.5.5a7.8 7.8 0 0 0-.8-.5l-.4-2.6H10l-.4 2.6-.8.5-2.4-.5-2 3.5 2.1 1.6v1l-2.1 1.6 2 3.5 2.5-.5c.26.18.53.35.81.5l.39 2.6h4.8l.39-2.6c.28-.15.55-.32.81-.5l2.5.5 2-3.5L19.4 15Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="icon-btn" title="Perfil">
-          <svg width="22" height="22" viewBox="0 0 24 24">
-            <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm7 9a7 7 0 0 0-14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
+      </button>
+      <button class="icon-btn" title="Perfil">
+        <svg width="22" height="22" viewBox="0 0 24 24">
+          <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm7 9a7 7 0 0 0-14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <span class="brand">Sistema B2B</span>
-      <label for="menu-toggle" class="close-btn">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </label>
-    </div>
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <span class="brand">Sistema B2B</span>
+    <label for="menu-toggle" class="close-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24">
+        <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </label>
+  </div>
 
-    <nav class="menu">
-      <a href="#" class="menu-item">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span>categoria</span>
-      </a>
-      <a href="#" class="menu-item active">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M4 4h16v4H4zM4 10h16v10H4z" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span>vendas</span>
-      </a>
-      <a href="#" class="menu-item">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M16 11a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" stroke-width="2" fill="none"/>
-          <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" fill="none"/>
-        </svg>
-        <span>clientes</span>
-      </a>
-      <a href="#" class="menu-item">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M3 7h18v10H3zM8 7V5h8v2" fill="none" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <span>produtos</span>
-      </a>
-      <a href="#" class="menu-item">
-        <svg width="22" height="22" viewBox="0 0 24 24">
-          <path d="M6 6h13l-1.5 9h-11zM7 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
-        <span>pedido</span>
-      </a>
-    </nav>
-  </aside>
+  <nav class="sidebar__nav">
+    <a class="nav__item" href="#" [class.is-active]="isActive('/categoria')" (click)="$event.preventDefault(); goTo('/categoria')">
+      <span class="ico">category</span> categoria
+    </a>
 
-  <!-- Overlay (escurece fundo quando o menu está aberto no mobile) -->
-  <label for="menu-toggle" class="overlay"></label>
+    <a class="nav__item" href="#" [class.is-active]="isActive('/venda')" (click)="$event.preventDefault(); goTo('/venda')">
+      <span class="ico">receipt_long</span> vendas
+    </a>
 
-  <!-- Conteúdo -->
-  <main class="content">
-    <h1>Conteúdo principal</h1>
-    <p>Exemplo de página com sidebar responsiva do Sistema B2B.</p>
-  </main>
-</body>
-</html>
+    <a class="nav__item" href="#" [class.is-active]="isActive('/cliente')" (click)="$event.preventDefault(); goTo('/cliente')">
+      <span class="ico">group</span> clientes
+    </a>
+
+    <a class="nav__item" href="#" [class.is-active]="isActive('/produtos')" (click)="$event.preventDefault(); goTo('/produtos')">
+      <span class="ico">inventory_2</span> produtos
+    </a>
+
+    <a class="nav__item" href="#" [class.is-active]="isActive('/pedido')" (click)="$event.preventDefault(); goTo('/pedido')">
+      <span class="ico">shopping_cart</span> pedido
+    </a>
+  </nav>
+</aside>
+
+<!-- Overlay (escurece fundo quando o menu está aberto no mobile) -->
+<label for="menu-toggle" class="overlay"></label>
+
+<!-- Conteúdo (exemplo local; o conteúdo real da página vem das rotas) -->
+<main class="content">
+  <h1>Conteúdo principal</h1>
+  <p>Exemplo de página com sidebar responsiva do Sistema B2B.</p>
+</main>

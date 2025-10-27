@@ -3,72 +3,82 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
+    <div class="sidebar__head">
     <div class="sidebar__brand">Sistema B2B</div>
-
+    <button class="icon-btn ghost only-mobile" aria-label="Fechar menu"
+            (click)="sidebarOpen = false">
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path d="M6 6l12 12M18 6l-12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
     <nav class="sidebar__nav">
-      <a class="nav__item" routerLink="/categoria">
-        <span class="ico">category</span> categoria
-      </a>
-      <a class="nav__item" routerLink="/vendas">
-        <span class="ico">receipt_long</span> vendas
-      </a>
-      <a class="nav__item" routerLink="/clientes">
-        <span class="ico">group</span> clientes
-      </a>
-      <a class="nav__item" routerLink="/produtos">
-        <span class="ico">inventory_2</span> produtos
-      </a>
-      <a class="nav__item is-active" routerLink="/pedido">
-        <span class="ico">shopping_cart</span> pedido
-      </a>
-    </nav>
-  </aside>
-</div> <!-- /layout -->
+    <a class="nav__item" href="#" [class.is-active]="isActive('/categoria')" (click)="$event.preventDefault(); goTo('/categoria')">
+      <span class="ico">category</span> categoria
+    </a>
 
-  <!-- BACKDROP (mobile) -->
-  <button class="backdrop" (click)="closeSidebar()" aria-label="Fechar menu"></button>
-  <button class="icon-btn only-mobile" aria-label="Menu" (click)="toggleSidebar()">
-  <!-- seu SVG do menu -->
-</button>
+    <a class="nav__item" href="#" [class.is-active]="isActive('/venda')" (click)="$event.preventDefault(); goTo('/venda')">
+      <span class="ico">receipt_long</span> vendas
+    </a>
+
+    <a class="nav__item" href="#" [class.is-active]="isActive('/cliente')" (click)="$event.preventDefault(); goTo('/cliente')">
+      <span class="ico">group</span> clientes
+    </a>
+
+    <a class="nav__item" href="#" [class.is-active]="isActive('/produtos')" (click)="$event.preventDefault(); goTo('/produtos')">
+      <span class="ico">inventory_2</span> produtos
+    </a>
+
+    <a class="nav__item" href="#" [class.is-active]="isActive('/pedido')" (click)="$event.preventDefault(); goTo('/pedido')">
+      <span class="ico">shopping_cart</span> pedido
+    </a>
+  </nav>
+  </aside>
 
   <!-- CONTEÚDO -->
   <main class="page">
-    <!-- seu header atual, busca, lista etc. vão DENTRO deste main -->
 
-<!-- ====== HEADER ====== -->
-<header class="header">
-  <button class="icon-btn" aria-label="Menu">
-    <!-- menu -->
-    <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-  </button>
-
+    <!-- ====== HEADER ====== -->
+    <header class="header">
+      <!-- HAMBÚRGUER (aparece só no mobile) -->
+      <button class="icon-btn only-mobile" aria-label="Abrir menu"
+          (click)="sidebarOpen = true">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
   <h1 class="header__title">PEDIDO</h1>
-
+  
   <div class="header__actions">
-    <button class="icon-btn badge" aria-label="Carrinho">
-      <!-- cart -->
-      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="badge__dot">3</span>
+    <button class="cart-btn" aria-label="Carrinho">
+      <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>CARRINHO</span>
+      <b class="cart-badge">3</b>
     </button>
+
     <button class="icon-btn" aria-label="Configurações">
-      <!-- settings -->
-      <svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8 4a8 8 0 0 1-.1 1.2l2.1 1.6-2 3.4-2.5-1A8.1 8.1 0 0 1 15.2 20l-.4 2.6H9.2L8.8 20a8.1 8.1 0 0 1-2.3-1.8l-2.5 1-2-3.4 2.1-1.6A8 8 0 0 1 4 12c0-.4 0-.8.1-1.2L2 9.2l2-3.4 2.5 1A8.1 8.1 0 0 1 8.8 4l.4-2.6h5.6L15.2 4a8.1 8.1 0 0 1 2.3 1.8l2.5-1 2 3.4-2.1 1.6c.1.4.1.8.1 1.2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <!-- engrenagem -->
+      <svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8 4a8 8 0 0 1-.1 1.2l2.1 1.6-2 3.4-2.5-1A8.1 8.1 0 0 1 15.2 20l-.4 2.6H9.2L8.8 20a8.1 8.1 0 0 1-2.3-1.8l-2.5 1-2-3.4 2.1-1.6A8 8 0 0 1 4 12c0-.4 0-.8.1-1.2L2 9.2l2-3.4 2.5 1A8.1 8.1 0 0 1 8.8 4l.4-2.6h5.6L15.2 4a8.1 8.1 0 0 1 2.3 1.8l2.5-1 2 3.4-2.1 1.6c.1.4.1.8.1 1.2Z"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
 </header>
 
-<!-- ====== BUSCA ====== -->
-<section class="search">
-  <div class="search__box">
-    <input type="text" placeholder="Buscar produtos, código ou categorias..." />
-    <button class="search__btn" aria-label="Buscar">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20L17 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <div class="filters">
+    <!-- ====== BUSCA ====== -->
+    <section class="search">
+  <div class="search__left">
+    <div class="search__box">
+      <input type="text" placeholder="Buscar produtos, código ou categorias..." />
+      <button class="search__btn" aria-label="Buscar">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20L17 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
     <button class="filters__btn" aria-label="Filtros">
       <svg viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M10 18h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
+
     <div class="chips">
       <button class="chip chip--on">ativos</button>
       <button class="chip">cx</button>
@@ -77,52 +87,92 @@
   </div>
 </section>
 
-<hr class="divider"/>
 
-<!-- ====== LISTA DE PRODUTOS ====== -->
+    <hr class="divider"/>
+
+    <!-- ====== LISTA DE PRODUTOS ====== -->
+    <!-- ====== LISTA DE PRODUTOS ====== -->
 <section class="list">
-  <!-- Card de produto -->
-  <article class="card">
-    <img class="card__img" src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&q=80" alt="Produto"/>
-    <div class="card__body">
-      <h3 class="card__title">Lorem ipsum dolor sit consectetur…</h3>
-      <p class="card__meta">Cód: 14</p>
-      <p class="card__price">R$ 19,90 <span>/ cx</span></p>
+  <!-- Linha 1 -->
+  <div class="row">
+    <article class="card">
+      <img class="card__img" src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&q=80" alt="Produto"/>
+      <div class="card__body">
+        <h3 class="card__title">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque</h3>
+        <p class="card__meta">Código: 14</p>
+        <p class="card__meta">Preço: R$ 19,90</p>
+        <p class="card__meta">Unidade: cx</p>
+      </div>
+      <div class="card__actions">
+        <div class="stepper">
+          <button aria-label="Diminuir">−</button>
+          <span class="qty">23</span>
+          <button aria-label="Aumentar">+</button>
+        </div>
+        <button class="cart-icon" aria-label="Adicionar ao carrinho">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </article>
+  </div>
 
+  <!-- Linha 2 -->
+  <div class="row">
+    <article class="card">
+      <img class="card__img" src="https://images.unsplash.com/photo-1605979252870-c8b8e1d2df9c?w=400&q=80" alt="Produto"/>
+      <div class="card__body">
+        <h3 class="card__title">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque</h3>
+        <p class="card__meta">Código: 14</p>
+        <p class="card__meta">Preço: R$ 19,90</p>
+        <p class="card__meta">Unidade: cx</p>
+      </div>
       <div class="card__actions">
         <div class="stepper">
           <button aria-label="Diminuir">−</button>
           <span class="qty">12</span>
           <button aria-label="Aumentar">+</button>
         </div>
-        <button class="btn-add">
-          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Adicionar
+        <button class="cart-icon" aria-label="Adicionar ao carrinho">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-    </div>
-    <button class="card__more" aria-label="Mais opções">⋮</button>
-  </article>
+    </article>
+  </div>
 
-  <!-- Repita os cards conforme necessário… -->
-  <article class="card">
-    <img class="card__img" src="https://images.unsplash.com/photo-1605979252870-c8b8e1d2df9c?w=400&q=80" alt="Produto"/>
-    <div class="card__body">
-      <h3 class="card__title">Lorem ipsum dolor sit consectetur…</h3>
-      <p class="card__meta">Cód: 14</p>
-      <p class="card__price">R$ 19,90 <span>/ cx</span></p>
+  <!-- Linha 3 -->
+  <div class="row">
+    <article class="card">
+      <img class="card__img" src="https://images.unsplash.com/photo-1582106245687-37a5b19f3b84?w=400&q=80" alt="Produto"/>
+      <div class="card__body">
+        <h3 class="card__title">Lorem ipsum dolor sit amet consectetur adipiscing elit quisque</h3>
+        <p class="card__meta">Código: 14</p>
+        <p class="card__meta">Preço: R$ 19,90</p>
+        <p class="card__meta">Unidade: cx</p>
+      </div>
       <div class="card__actions">
         <div class="stepper">
           <button aria-label="Diminuir">−</button>
-          <span class="qty">12</span>
+          <span class="qty">23</span>
           <button aria-label="Aumentar">+</button>
         </div>
-        <button class="btn-add">
-          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Adicionar
+        <button class="cart-icon" aria-label="Adicionar ao carrinho">
+          <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.2 8.4a2 2 0 0 1-2 1.6H8.6a2 2 0 0 1-2-1.6L5 4H3"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
-    </div>
-    <button class="card__more" aria-label="Mais opções">⋮</button>
-  </article>
+    </article>
+  </div>
 </section>
+
+
+  </main>
+</div><!-- /layout -->
+
+<!-- BACKDROP (mobile) -->
+<button class="backdrop" (click)="closeSidebar()" aria-label="Fechar menu"></button>
+<button *ngIf="sidebarOpen" class="backdrop"
+        (click)="sidebarOpen = false" aria-label="Fechar menu"></button>
+
+
