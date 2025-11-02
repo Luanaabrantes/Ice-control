@@ -105,8 +105,11 @@ html, body{
 /* Ícones */
 .nav__item .ico{
   font-family:'Material Symbols Rounded';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   font-size:20px;
   color:#64748b;
+  line-height:0;
+  margin-right:2px;
 }
 
 .nav__item.is-active .ico{
@@ -114,12 +117,7 @@ html, body{
 }
 
 /* Material Symbols (ícones do menu) */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,-50..200');
-.ico{
-  font-family:'Material Symbols Rounded';
-  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
-  font-size:20px; color:#64748b; line-height:0; margin-right:2px;
-}
+/* font-variation-settings and other properties are applied above on .nav__item .ico */
 
 /* ===== Conteúdo ===== */
 .page {
@@ -130,7 +128,6 @@ html, body{
   padding: 0 40px 40px; /* respiro lateral */
   background: #fff;
 }
-
 
 /* Header */
 .header{

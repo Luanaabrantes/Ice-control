@@ -1,165 +1,156 @@
-/* ===================== VARIÁVEIS GLOBAIS ===================== */
+/* ===== VARS ===== */
 :root{
-  --page:#ffffff;           /* fundo da página */
-  --page-muted:#f3f7ff;     /* fundo suave da área de conteúdo */
-  --text:#0f172a;           /* texto principal */
-  --muted:#6b7280;          /* texto secundário */
-  --primary:#0a74ff;        /* azul do botão principal */
-  --primary-600:#156ee6;    /* azul mais escuro (hover) */
-  --stroke:#e5e7eb;         /* bordas e divisores */
-  --card:#ffffff;           /* fundo do card */
-  --radius:14px;            /* raio padrão */
-  --shadow:0 8px 22px rgba(15,23,42,.08); /* sombra suave */
+  --page:#ffffff;
+  --page-muted:#eaf2fb;
+  --text:#0f172a;
+  --muted:#6b7280;
+  --primary:#0a74ff;
+  --primary-600:#156ee6;
+  --stroke:#e5e7eb;
+  --card:#ffffff;
+  --radius:14px;
+  --shadow:0 8px 22px rgba(15,23,42,.08);
 
-  /* Tipografia fluida (mobile-first) */
   --fs-12: clamp(11px,.75vw,12px);
   --fs-14: clamp(13px,1vw,14px);
   --fs-16: clamp(15px,1.1vw,16px);
-
-  /* Cores dos chips de status */
-  --chip-open-bg:#fde68a;   /* amarelo claro */
-  --chip-open-text:#7c5a00; /* texto amarelo escuro */
-  --chip-draft-bg:#e0efff;  /* azul claro */
-  --chip-draft-text:#0a4fb3;
 }
 
-/* ================ BASE / RESET ================ */
-*{ box-sizing:border-box }
-html,body{ height:100% }
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text);
-  background:var(--page);
-  line-height:1.35;
+/* ===== LAYOUT + SIDEBAR ===== */
+.layout{ position:relative; min-height:100dvh; background:var(--page-muted) }
+.scrim{ position:fixed; inset:0; background:rgba(15,23,42,.45); opacity:0; pointer-events:none; transition:opacity .25s; z-index:30 }
+.layout.menu-open .scrim{ opacity:1; pointer-events:auto }
+
+.sidebar{
+  position:fixed; inset:0 auto 0 0; width:260px; background:#fff;
+  border-right:1px solid var(--stroke); padding:16px 12px; transform:translateX(-100%);
+  transition:transform .28s ease; z-index:40;
+}
+.layout.menu-open .sidebar{ transform:translateX(0) }
+.sidebar__header{ gap:8px }
+.sidebar .brand{ font-weight:700 }
+.sidebar__nav{ display:grid; gap:4px }
+.nav__item{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; color:var(--text); text-decoration:none }
+.nav__item:hover{ background:#f6f8fc }
+.nav__item.is-active, .nav__item.router-link-active{ background:#eaf2ff; color:#0a4fb3 }
+.nav__item .material-symbols-rounded{ font-size:20px }
+.mobile-only{ display:none }
+
+@media (min-width:1024px){
+  .sidebar{ position:sticky; top:0; height:100dvh; transform:none; z-index:1 }
+  .scrim{ display:none }
+  .layout{ display:grid; grid-template-columns:240px 1fr }
 }
 
-/* Configuração global para os ícones Material Symbols */
-.material-symbols-rounded{
-  font-family:'Material Symbols Rounded';
-  font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;
-  vertical-align:middle;
-  font-size:22px;
-  line-height:1;
-  -webkit-font-feature-settings:'liga';
-  font-feature-settings:'liga';
-  -webkit-font-smoothing:antialiased;
-}
-/* classe para evitar tradução automática do texto do ícone */
-.notranslate{ translate:no; }
-
-/* ================ TOPO (TOPBAR) ================ */
+/* ===== TOPBAR ===== */
 .topbar{
-  position:sticky; top:0; z-index:10;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 16px;
-  background:#fff; border-bottom:1px solid var(--stroke);
+  position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--stroke);
+  display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
 }
-.topbar h1{
-  margin:0; text-transform:uppercase; letter-spacing:.6px;
-  font-weight:700; font-size:var(--fs-14);
-}
-.top-actions{ display:flex; gap:4px }
-.icon-btn{
-  background:transparent; border:0; padding:6px;
-  border-radius:10px; cursor:pointer; color:var(--text);
-}
+.topbar__left{ display:flex; align-items:center; gap:8px }
+.topbar__right{ display:flex; align-items:center; gap:10px }
+.topbar h1{ margin:0; text-transform:uppercase; letter-spacing:.6px; font-weight:700; font-size:var(--fs-14) }
+.icon-btn{ background:transparent; border:0; padding:6px; border-radius:10px; cursor:pointer; color:var(--text) }
 .icon-btn:hover{ background:rgba(0,0,0,.05) }
+.btn{ font-weight:700; border-radius:10px; border:0; cursor:pointer }
+.btn-primary{ padding:10px 16px; background:var(--primary); color:#fff; box-shadow:var(--shadow) }
+.btn-primary:hover{ background:var(--primary-600) }
 
-/* ================ CONTEÚDO ================ */
-.page{
-  background:var(--page-muted);
-  margin:0 auto;
-  padding:16px 14px 24px;
-  max-width:480px;           /* centraliza no desktop */
-}
+/* ===== PAGE ===== */
+.page{ max-width:1100px; padding:16px 16px 28px; margin:0 auto }
 
-/* Botão principal "NOVO PEDIDO" */
-.primary-btn{
-  width:100%;
-  border:0; border-radius:10px;
-  padding:12px 16px; font-weight:700; color:#fff;
-  background:var(--primary); box-shadow:var(--shadow);
-  cursor:pointer;
-}
-.primary-btn:hover{ background:var(--primary-600) }
-.primary-btn:active{ transform:translateY(1px) }
+/* ===== BUSCA + FILTROS ===== */
+.tools{ display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; margin:10px 0 12px }
+@media (max-width:720px){ .tools{ grid-template-columns:1fr } }
 
-/* Busca (cápsula arredondada) */
 .search{
-  display:flex; align-items:center; gap:8px;
-  background:#fff; border:1px solid var(--stroke);
-  border-radius:999px; padding:10px 14px; margin:12px 0 8px;
+  position:relative; display:flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid var(--stroke); border-radius:999px; padding:10px 44px 10px 40px;
 }
-.search input{
-  border:0; outline:0; width:100%;
-  font-size:var(--fs-14); background:transparent; color:var(--text);
-}
-.search .material-symbols-rounded{ color:#94a3b8 }
+.search__icon{ position:absolute; left:12px; color:#94a3b8 }
+.search__filter{ position:absolute; right:4px }
+.search input{ border:0; outline:0; width:100%; font-size:var(--fs-14); background:transparent; color:var(--text) }
 
-/* Filtros (chips) */
-.filters{
-  display:flex; gap:8px; flex-wrap:wrap;
-  margin:8px 0 14px;
-}
+.filters{ display:flex; gap:8px; flex-wrap:wrap }
 .chip{
-  display:inline-flex; align-items:center; gap:6px;
-  padding:6px 10px; border-radius:999px; border:1px solid var(--stroke);
-  background:#fff; color:var(--text); font-size:var(--fs-12);
-}
-.chip-filter.is-active{
-  background:#eaf2ff; border-color:#d4e2ff;
-}
-
-/* Lista de cards */
-.cards{ display:grid; gap:12px }
-
-/* Card do pedido */
-.card{
-  background:var(--card);
-  border-radius:var(--radius);
-  border:1px solid var(--stroke);
-  box-shadow:var(--shadow);
-  padding:14px;
-}
-.card-head{
-  display:flex; align-items:center; justify-content:space-between;
-  color:var(--muted);
-  margin-bottom:8px;
+  display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
+  border-radius:999px; border:1px solid var(--stroke); background:#fff; color:var(--text);
   font-size:var(--fs-12);
 }
-.card .name{
-  margin:2px 0 8px;
-  font-size:var(--fs-16); font-weight:600; color:var(--text);
+.chip-filter.is-active{ background:#eaf2ff; border-color:#d4e2ff }
+.chip--primary{ background:#e6f0ff; border-color:#d4e2ff; color:#0a4fb3 }
+
+/* ===== TABELA ===== */
+.table-card{ background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow) }
+.table-wrap{ width:100%; overflow:auto }
+@media (min-width:1024px){ .table-wrap{ max-height:64vh } }
+
+.orders{ width:100%; border-collapse:separate; border-spacing:0; min-width:760px }
+.orders thead th{
+  background:#f5f8ff; color:var(--muted); font-weight:700; text-align:left; padding:14px 16px;
+  border-bottom:1px solid var(--stroke); font-size:var(--fs-12)
+}
+.orders tbody td{ padding:14px 16px; border-bottom:1px solid var(--stroke); font-size:var(--fs-14); color:var(--text); background:#fff }
+.orders tbody tr:hover td{ background:#fcfdff }
+
+.orders tbody td:nth-child(1){ width:110px }
+.orders tbody td:nth-child(2){ width:160px }
+.orders tbody td:nth-child(4){ text-align:right; width:150px }
+.orders tbody td:nth-child(5){ width:160px }
+.orders td.row-actions{ width:56px; text-align:right; padding-right:8px }
+
+/* ===== BADGES ===== */
+.badge{ display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; font-weight:700; font-size:var(--fs-12); white-space:nowrap }
+.badge-open   { background:#fde68a; color:#7c5a00 }  /* Em aberto */
+.badge-draft  { background:#e0efff; color:#0a4fb3 }  /* Em digitação */
+.badge-waiting{ background:#ffebe1; color:#bc4b00 }  /* Aguardando */
+.badge-done   { background:#ccfbdf; color:#045a2c }  /* Concluído */
+.badge-cancel { background:#ffe2e2; color:#b00020 }  /* Cancelado */
+.badge-return { background:#e7e9ef; color:#2d2f38 }  /* Devolução */
+
+/* ===== PAGINAÇÃO ===== */
+.pager{ display:flex; justify-content:center; gap:6px; padding:8px 0 16px }
+.pager__btn,.pager__page{ min-width:28px; height:28px; border:1px solid #dfe6f4; background:#fff; border-radius:8px; font-size:12px; cursor:pointer }
+.pager__page.is-active{ background:#0a74ff; color:#fff; border-color:#0a74ff }
+
+/* ===== MOBILE: tabela -> cards ===== */
+@media (max-width:720px){
+  .mobile-only{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--stroke) }
+
+  .orders{ min-width:0 }
+  .orders thead{ display:none }
+
+  .orders tbody tr{
+    display:grid; grid-template-areas:
+      "meta    actions"
+      "title   actions"
+      "date    total"
+      "status  status";
+    grid-template-columns:1fr auto; row-gap:8px;
+    border:1px solid var(--stroke); border-radius:12px; background:#fff; box-shadow:var(--shadow);
+    padding:12px; margin:10px 8px; overflow:hidden;
+  }
+  .orders tbody td{ border:0; padding:0; background:transparent }
+  .orders tbody td[data-label]::before{ content:none !important }
+
+  .orders tbody td:nth-child(1){ grid-area:meta; color:var(--muted); font-size:var(--fs-12) }
+  .orders tbody td:nth-child(1)::before{ content:"Pedido #"; margin-right:4px }
+  .orders tbody td:nth-child(2){ grid-area:date }
+  .orders tbody td:nth-child(2)::before{ content:"Data"; display:block; font-size:var(--fs-12); color:var(--muted); margin-bottom:2px }
+  .orders tbody td:nth-child(3){ grid-area:title; font-size:var(--fs-16); font-weight:600; color:var(--text) }
+  .orders tbody td:nth-child(4){ grid-area:total; text-align:right; font-variant-numeric:tabular-nums }
+  .orders tbody td:nth-child(4)::before{ content:"Total"; display:block; font-size:var(--fs-12); color:var(--muted); margin-bottom:2px }
+  .orders tbody td:nth-child(5){ grid-area:status }
+  .orders tbody td:nth-child(5)::before{ content:"Situação"; display:block; font-size:var(--fs-12); color:var(--muted); margin-bottom:4px }
+  .orders .badge{ margin-top:2px }
+  .orders tbody td:nth-child(6){ grid-area:actions; justify-self:end }
+  .orders td.row-actions .icon-btn{ padding:6px; border-radius:8px }
+
+  .pager__btn,.pager__page{ min-width:32px; height:32px }
+  .page{ padding-bottom:80px }
+  .table-card{ border:0; box-shadow:none; background:transparent }
 }
 
-/* Linhas e colunas */
-.row{ display:flex; flex-direction:column; gap:2px; margin:6px 0 }
-.two-col{ flex-direction:row; gap:12px }
-.two-col > div{ flex:1; min-width:0 }
-.two-col .right{ text-align:right }
 
-.label{ font-size:var(--fs-12); color:var(--muted) }
-.value{ font-size:var(--fs-14) }
-.total{ font-weight:600 }
 
-/* Chips de status */
-.chip-status{
-  display:inline-flex; align-items:center;
-  padding:6px 10px; border-radius:999px; font-size:var(--fs-12);
-  font-weight:600;
-}
-.chip-open{ background:var(--chip-open-bg); color:var(--chip-open-text) }
-.chip-draft{ background:var(--chip-draft-bg); color:var(--chip-draft-text) }
 
-/* ================ RESPONSIVIDADE ================ */
-@media (min-width:520px){
-  .page{ max-width:560px; padding-inline:18px; }
-}
-@media (min-width:768px){
-  .page{ max-width:640px; }
-  .card{ padding:16px 18px; }
-}
-@media (min-width:1024px){
-  .page{ max-width:720px; }
-}

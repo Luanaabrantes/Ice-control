@@ -1,108 +1,138 @@
-<!--
-  IMPORTANTE: coloque no <head> do seu projeto (ex.: index.html do Angular):
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL,wght,GRAD,opsz@1,500,0,24" rel="stylesheet">
-  <meta name="google" content="notranslate">
--->
+<div class="layout" [class.menu-open]="menuOpen()">
+  <div class="scrim" (click)="toggleMenu()" aria-hidden="true"></div>
 
-<!-- ====== TOPO DA PÁGINA (Topbar) ====== -->
-<header class="topbar">
-  <button class="icon-btn" aria-label="Abrir menu">
-    <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">menu</span>
-  </button>
+  <aside class="sidebar" role="navigation" aria-label="Menu lateral" id="app-sidebar">
+    <div class="sidebar__header mobile-only">
+      <span class="brand">Sistema B2B</span>
+      <button class="icon-btn" aria-label="Fechar menu" (click)="toggleMenu()">
+        <span class="material-symbols-rounded notranslate" translate="no">close</span>
+      </button>
+    </div>
 
-  <h1>VENDAS</h1>
+    <nav class="sidebar__nav">
+      <a routerLink="/categoria" routerLinkActive="is-active" class="nav__item" title="categoria">
+        <span class="material-symbols-rounded notranslate" translate="no">grid_view</span>
+        <span class="nav__label">categoria</span>
+      </a>
+      <a routerLink="/vendas" routerLinkActive="is-active" class="nav__item" title="vendas">
+        <span class="material-symbols-rounded notranslate" translate="no">description</span>
+        <span class="nav__label">vendas</span>
+      </a>
+      <a routerLink="/clientes" routerLinkActive="is-active" class="nav__item" title="clientes">
+        <span class="material-symbols-rounded notranslate" translate="no">group</span>
+        <span class="nav__label">clientes</span>
+      </a>
+      <a routerLink="/produtos" routerLinkActive="is-active" class="nav__item" title="produtos">
+        <span class="material-symbols-rounded notranslate" translate="no">inventory_2</span>
+        <span class="nav__label">produtos</span>
+      </a>
+      <a routerLink="/pedido" routerLinkActive="is-active" class="nav__item" title="pedido">
+        <span class="material-symbols-rounded notranslate" translate="no">shopping_cart</span>
+        <span class="nav__label">pedido</span>
+      </a>
+    </nav>
+  </aside>
 
-  <div class="top-actions">
-    <button class="icon-btn" aria-label="Configurações">
-      <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">settings</span>
-    </button>
-    <button class="icon-btn" aria-label="Perfil">
-      <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">person</span>
-    </button>
-  </div>
-</header>
+  <div class="layout__content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <button
+          class="icon-btn"
+          aria-label="Abrir menu"
+          aria-controls="app-sidebar"
+          [attr.aria-expanded]="menuOpen() ? 'true' : 'false'"
+          (click)="toggleMenu()">
+          <span class="material-symbols-rounded notranslate" translate="no">menu</span>
+        </button>
+        <h1>VENDAS</h1>
+      </div>
 
-<!-- ====== CONTEÚDO PRINCIPAL ====== -->
-<main class="page">
-
-  <!-- BOTÃO PRINCIPAL -->
-  <button class="primary-btn">NOVO PEDIDO</button>
-
-  <!-- CAMPO DE BUSCA -->
-  <div class="search" role="search">
-    <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">search</span>
-    <input type="text" placeholder="Buscar" aria-label="Buscar pedidos" />
-  </div>
-
-  <!-- FILTROS (chips) -->
-  <div class="filters" aria-label="Filtros">
-    <button class="chip chip-filter is-active" aria-pressed="true">todos</button>
-    <button class="chip chip-filter" aria-pressed="false">17/09 a 27/09</button>
-  </div>
-
-  <!-- LISTA DE CARDS DE PEDIDOS -->
-  <section class="cards">
-
-    <!-- === CARD 1 === -->
-    <article class="card">
-      <!-- Cabeçalho: número do pedido + menu -->
-      <div class="card-head">
-        <span class="meta">Pedido <strong>#14695</strong></span>
-        <button class="icon-btn" aria-label="Mais opções">
-          <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">more_vert</span>
+      <div class="topbar__right">
+        <button class="btn btn-primary">NOVO PEDIDO</button>
+        <button class="icon-btn" aria-label="Configurações">
+          <span class="material-symbols-rounded notranslate" translate="no">settings</span>
+        </button>
+        <button class="icon-btn" aria-label="Perfil">
+          <span class="material-symbols-rounded notranslate" translate="no">person</span>
         </button>
       </div>
+    </header>
 
-      <!-- Nome do cliente -->
-      <h2 class="name">Jose Ricardo Flor</h2>
-
-      <!-- Linha com Data (esq) e Total (dir) -->
-      <div class="row two-col">
-        <div>
-          <span class="label">Data</span>
-          <span class="value">25/08/2025</span>
+    <main class="page">
+      <!-- BUSCA + FILTROS (lado a lado como no mock) -->
+      <div class="tools">
+        <div class="search" role="search">
+          <span class="search__icon material-symbols-rounded notranslate" translate="no">search</span>
+          <input
+            type="text"
+            placeholder="Buscar"
+            aria-label="Buscar pedidos"
+            (input)="onSearch($event)" />
+          <button class="search__filter icon-btn" aria-label="Filtros">
+            <span class="material-symbols-rounded notranslate" translate="no">tune</span>
+          </button>
         </div>
-        <div class="right">
-          <span class="label">Total</span>
-          <span class="value total">R$ 1.589,99</span>
-        </div>
-      </div>
 
-      <!-- Situação (chip colorido) -->
-      <div class="row">
-        <span class="label">Situação</span>
-        <span class="chip chip-status chip-open">Em aberto</span>
-      </div>
-    </article>
+        <div class="filters" aria-label="Filtros">
+          <button
+            class="chip chip-filter"
+            [class.is-active]="filtroPeriodo() === 'todos'"
+            (click)="setPeriodo('todos')">todos</button>
 
-    <!-- === CARD 2 === -->
-    <article class="card">
-      <div class="card-head">
-        <span class="meta">Pedido <strong>#14695</strong></span>
-        <button class="icon-btn" aria-label="Mais opções">
-          <span class="material-symbols-rounded notranslate" translate="no" aria-hidden="true">more_vert</span>
-        </button>
-      </div>
-
-      <h2 class="name">Jose Ricardo Flor</h2>
-
-      <div class="row two-col">
-        <div>
-          <span class="label">Data</span>
-          <span class="value">25/08/2025</span>
-        </div>
-        <div class="right">
-          <span class="label">Total</span>
-          <span class="value total">R$ 1.589,99</span>
+          <button
+            class="chip chip-filter chip--primary"
+            [class.is-active]="filtroPeriodo() === '17-27'"
+            (click)="setPeriodo('17-27')">17/09 a 27/09</button>
         </div>
       </div>
 
-      <div class="row">
-        <span class="label">Situação</span>
-        <span class="chip chip-status chip-draft">Em digitação</span>
-      </div>
-    </article>
+      <!-- TABELA -->
+      <section class="table-card" aria-label="Lista de vendas">
+        <div class="table-wrap">
+          <table class="orders">
+            <thead>
+              <tr>
+                <th>Número</th>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Total (R$)</th>
+                <th>Situação</th>
+                <th aria-label="Ações"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of pedidosFiltrados()">
+                <td data-label="Número">{{ p.numero }}</td>
+                <td data-label="Data">{{ p.data | date:'dd/MM/yyyy' }}</td>
+                <td data-label="Cliente">{{ p.cliente }}</td>
+                <td data-label="Total (R$)">{{ p.total | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</td>
+                <td data-label="Situação">
+                  <span [ngClass]="chipClass(p.status)" class="badge">{{ statusLabel(p.status) }}</span>
+                </td>
+                <td class="row-actions">
+                  <button class="icon-btn" aria-label="Mais opções">
+                    <span class="material-symbols-rounded notranslate" translate="no">more_vert</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-  </section>
-</main>
+      <!-- PAGINAÇÃO -->
+      <nav class="pager" aria-label="Paginação">
+        <button class="pager__btn" aria-label="Primeira página">«</button>
+        <button class="pager__btn" aria-label="Anterior">‹</button>
+        <button class="pager__page is-active">1</button>
+        <button class="pager__page">2</button>
+        <button class="pager__page">3</button>
+        <button class="pager__btn" aria-label="Próxima">›</button>
+        <button class="pager__btn" aria-label="Última página">»</button>
+      </nav>
+    </main>
+  </div>
+</div>
+
+

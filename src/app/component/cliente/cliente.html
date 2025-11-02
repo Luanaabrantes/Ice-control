@@ -1,8 +1,8 @@
 <!-- === BARRA SUPERIOR (TOPO) === -->
 <header class="topbar">
   <!-- Ícone do menu lateral -->
-  <button class="icon-btn" aria-label="Menu">
-    <span class="material-symbols-rounded">menu</span>
+  <button class="icon-btn" aria-label="Abrir menu">
+    <span class="material-symbols-rounded" aria-hidden="true">menu</span>
   </button>
 
   <!-- Título da página -->
@@ -11,43 +11,39 @@
   <!-- Ícones à direita (configurações e perfil) -->
   <div class="top-actions">
     <button class="icon-btn" aria-label="Configurações">
-      <span class="material-symbols-rounded">settings</span>
+      <span class="material-symbols-rounded" aria-hidden="true">settings</span>
     </button>
     <button class="icon-btn" aria-label="Conta">
-      <span class="material-symbols-rounded">person</span>
+      <span class="material-symbols-rounded" aria-hidden="true">person</span>
     </button>
   </div>
 </header>
 
 <!-- === CONTEÚDO PRINCIPAL === -->
-<main class="page">
+<main class="page" role="main">
   <!-- Botão principal para adicionar um novo cliente -->
-  <button class="primary-btn">NOVO CLIENTE</button>
+  <button class="primary-btn" type="button">NOVO CLIENTE</button>
 
   <!-- Campo de busca de clientes -->
-  <div class="search" role="search">
-    <!-- Ícone de lupa -->
+  <label class="search" role="search" aria-label="Buscar cliente">
     <span class="material-symbols-rounded" aria-hidden="true">search</span>
-    <!-- Input de busca -->
-    <input type="text" placeholder="Buscar cliente" aria-label="Buscar cliente" />
-  </div>
+    <input type="search" placeholder="Buscar cliente" />
+  </label>
 
   <!-- === LISTA DE CLIENTES (CARDS) === -->
-  <section class="cards">
+  <section class="cards" aria-label="Lista de clientes">
     <!-- CARD DE CLIENTE -->
-    <article class="card">
-      <!-- Cabeçalho do card: indica que é um cliente e mostra o botão de menu -->
+    <article class="card" tabindex="0">
       <div class="card-head">
         <span class="chip">Cliente</span>
         <button class="icon-btn" aria-label="Mais opções">
-          <span class="material-symbols-rounded">more_vert</span>
+          <!-- no mockup é horizontal -->
+          <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
         </button>
       </div>
 
-      <!-- Nome do cliente -->
       <h2 class="name">José Ricardo Flor</h2>
 
-      <!-- Linha com código e CPF -->
       <div class="row two-col">
         <div>
           <span class="label">Código</span>
@@ -59,21 +55,21 @@
         </div>
       </div>
 
-      <!-- Linha com e-mail -->
       <div class="row">
         <span class="label">E-mail</span>
         <span class="value">joiazinho123@gmail.com</span>
       </div>
     </article>
 
-    <!-- Segundo card (exemplo repetido) -->
-    <article class="card">
+    <!-- Segundo card (exemplo) -->
+    <article class="card" tabindex="0">
       <div class="card-head">
         <span class="chip">Cliente</span>
         <button class="icon-btn" aria-label="Mais opções">
-          <span class="material-symbols-rounded">more_vert</span>
+          <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
         </button>
       </div>
+
       <h2 class="name">José Ricardo Flor</h2>
 
       <div class="row two-col">
@@ -94,3 +90,4 @@
     </article>
   </section>
 </main>
+

@@ -1,42 +1,39 @@
 /* =================== VARIÁVEIS GLOBAIS =================== */
-/* Centraliza as cores e tamanhos em um só lugar para facilitar manutenção */
 :root{
-  /* cores principais do layout */
-  --page:#ffffff;          /* cor de fundo geral */
-  --page-muted:#eef4ff;    /* tom azulado claro */
-  --text:#0f172a;          /* cor principal do texto */
-  --muted:#6b7280;         /* cor de texto secundário */
-  --primary:#1e7cf2;       /* azul principal (botão) */
-  --primary-600:#156ee6;   /* azul mais escuro (hover) */
-  --stroke:#e5e7eb;        /* bordas suaves */
-  --card:#ecf2ff;          /* fundo dos cards */
+  --page:#ffffff;
+  --page-muted:#eef4ff;
+  --text:#0f172a;
+  --muted:#6b7280;
+  --primary:#1e7cf2;
+  --primary-600:#156ee6;
+  --stroke:#e5e7eb;
+  --card:#ecf2ff;
 
-  /* arredondamentos e sombras */
   --radius:16px;
   --shadow:0 10px 24px rgba(15,23,42,.10);
 
-  /* tamanhos de fonte adaptáveis */
   --fs-12: clamp(11px, .75vw, 12px);
   --fs-14: clamp(13px, 1vw, 14px);
   --fs-16: clamp(15px, 1.1vw, 16px);
 }
 
 /* =================== ESTILO BASE =================== */
-*{ box-sizing:border-box }  /* evita que paddings e bordas quebrem o layout */
+*{ box-sizing:border-box }
 html,body{ height:100% }
-body{
-  margin:0;
-  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+:focus-visible{ outline:2px solid #94bfff; outline-offset:2px }
+
+:host, body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
-  background:var(--page);
-  line-height:1.35;
 }
+
+body{ margin:0; background:var(--page) }
 
 /* =================== TOPO DA PÁGINA =================== */
 .topbar{
-  position:sticky;  /* fixa no topo durante rolagem */
-  top:0;
-  z-index:10;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -45,7 +42,6 @@ body{
   border-bottom:1px solid var(--stroke);
 }
 
-/* Título "CLIENTES" */
 .topbar h1{
   margin:0;
   font-weight:700;
@@ -54,10 +50,8 @@ body{
   text-transform:uppercase;
 }
 
-/* container dos ícones da direita */
 .top-actions{ display:flex; gap:4px }
 
-/* estilo padrão dos botões de ícone */
 .icon-btn{
   border:0;
   background:transparent;
@@ -66,9 +60,9 @@ body{
   cursor:pointer;
   color:var(--text);
 }
+.icon-btn:hover{ background:rgba(15,23,42,.04) }
 .icon-btn:active{ background:var(--page-muted) }
 
-/* configuração dos ícones da fonte Material Symbols */
 .material-symbols-rounded{
   font-variation-settings:"FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
   vertical-align:middle;
@@ -78,9 +72,10 @@ body{
 /* =================== CONTEÚDO PRINCIPAL =================== */
 .page{
   padding:16px 14px 24px;
-  margin-inline:auto;       /* centraliza horizontalmente */
-  max-width:480px;          /* largura máxima em telas grandes */
-  background: #f4f8ff;
+  margin-inline:auto;
+  max-width:480px;
+  background:#f4f8ff;
+  min-height: calc(100dvh - 56px); /* evita “buracos” sob a topbar */
 }
 
 /* botão azul "NOVO CLIENTE" */
@@ -95,6 +90,7 @@ body{
   background:var(--primary);
   box-shadow:var(--shadow);
   cursor:pointer;
+  transition:transform .04s ease, background .15s ease;
 }
 .primary-btn:hover{ background:var(--primary-600) }
 .primary-btn:active{ transform:translateY(1px) }
@@ -107,7 +103,7 @@ body{
   gap:8px;
   background:#fff;
   border:1px solid var(--stroke);
-  border-radius:999px;   /* bordas totalmente arredondadas */
+  border-radius:999px;
   padding:10px 14px;
 }
 .search input{
@@ -122,19 +118,19 @@ body{
 
 /* =================== LISTA DE CARDS =================== */
 .cards{
-  display:grid;   /* organiza os cards um abaixo do outro */
-  gap:12px;       /* espaço entre eles */
+  display:grid;
+  gap:12px;
 }
 
 /* =================== CARD DE CLIENTE =================== */
 .card{
-  background:#ecf2ff;
-  border-radius: 14px;
+  background:var(--card);
+  border-radius:14px;
   box-shadow:0 6px 20px rgba(15,23,42,.10);
   padding:14px;
 }
+.card:focus{ outline:none } /* usaremos :focus-visible global */
 
-/* cabeçalho do card (chip + menu) */
 .card-head{
   display:flex;
   align-items:center;
@@ -143,15 +139,14 @@ body{
 }
 .chip{
   font-size:12px;
-  color: #6b7280;
+  color:#6b7280;
 }
 .name{
   margin:4px 0 8px;
   font-weight:600;
-  font-size: 15px;
+  font-size:15px;
 }
 
-/* linhas de texto (Código, CPF, E-mail) */
 .row{
   display:flex;
   flex-direction:column;
@@ -159,20 +154,13 @@ body{
   margin:6px 0;
 }
 
-/* quando há duas colunas (Código | CPF/CNPJ) */
 .two-col{
   flex-direction:row;
   gap:12px;
 }
-.two-col > div{
-  flex:1;           /* cada coluna ocupa metade */
-  min-width:0;
-}
-.two-col .right{
-  text-align:right; /* alinha o CPF à direita */
-}
+.two-col > div{ flex:1; min-width:0 }
+.two-col .right{ text-align:right }
 
-/* rótulos e valores */
 .label{
   font-size:var(--fs-12);
   color:var(--muted);
@@ -182,28 +170,23 @@ body{
 }
 
 /* =================== RESPONSIVIDADE =================== */
-
-/* Telas maiores que 480px (celulares grandes e tablets pequenos) */
 @media (min-width:480px){
-  .page{ padding-inline:18px; } /* aumenta a margem lateral */
+  .page{ padding-inline:18px }
 }
 
-/* Telas maiores que 768px (tablets e notebooks pequenos) */
 @media (min-width:768px){
-  .topbar{ padding:14px 22px; } /* mais espaçamento na barra superior */
-  .page{ padding:18px 22px 28px; } /* padding maior nas bordas */
-  .primary-btn{ padding:14px 18px; } /* botão mais alto */
-  .card{ padding:16px; } /* mais espaço interno no card */
+  .topbar{ padding:14px 22px }
+  .page{ padding:18px 22px 28px }
+  .primary-btn{ padding:14px 18px }
+  .card{ padding:16px }
 }
 
-/* Telas maiores que 1024px (desktops) */
 @media (min-width:1024px){
-  .page{ max-width:860px; } /* limita o conteúdo central */
-  .cards{ gap:14px; }       /* espaço maior entre os cards */
-  .name{ font-size:clamp(16px, 1.2vw, 18px); } /* fonte ligeiramente maior */
+  .page{ max-width:860px }
+  .cards{ gap:14px }
+  .name{ font-size:clamp(16px, 1.2vw, 18px) }
 }
 
-/* Acessibilidade: desativa animações se o usuário preferir */
 @media (prefers-reduced-motion: reduce){
-  .primary-btn:active{ transform:none; }
+  .primary-btn:active{ transform:none }
 }
